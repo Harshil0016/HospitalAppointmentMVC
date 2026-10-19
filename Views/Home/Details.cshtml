@@ -1,0 +1,43 @@
+@model Doctor
+
+<h1>Doctor Details</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Doctor ID</th>
+        <td>@Model.DoctorId</td>
+    </tr>
+    <tr>
+        <th>Doctor Name</th>
+        <td>@Model.DoctorName</td>
+    </tr>
+    <tr>
+        <th>Specialization</th>
+        <td>@Model.Specialization</td>
+    </tr>
+    <tr>
+        <th>Experience</th>
+        <td>@Model.Experience years</td>
+    </tr>
+    <tr>
+        <th>Consultation Fee</th>
+        <td>₹@Model.ConsultationFee</td>
+    </tr>
+    <tr>
+        <th>Service Charge</th>
+        <td>₹100</td>
+    </tr>
+    <tr>
+        <th>Total Charge</th>
+        <td>₹@ViewBag.TotalCharge</td>
+    </tr>
+</table>
+
+<a asp-action="Appointment"
+   asp-route-id="@Model.DoctorId">
+    Book Appointment
+</a>
+
+<p>
+    <a asp-action="Index">Back to Doctor List</a>
+</p>

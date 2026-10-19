@@ -1,0 +1,45 @@
+﻿@model List<Doctor>
+
+<h1>Hospital Appointment Management</h1>
+
+<p>
+    <a asp-action="Posts">View API Posts</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Doctor ID</th>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Experience</th>
+            <th>Consultation Fee</th>
+            <th>Total Charge</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.DoctorId</td>
+                <td>@doctor.DoctorName</td>
+                <td>@doctor.Specialization</td>
+                <td>@doctor.Experience years</td>
+                <td>₹@doctor.ConsultationFee</td>
+                <td>₹@doctor.CalculateTotalCharge()</td>
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@doctor.DoctorId">
+                        Details
+                    </a>
+                    |
+                    <a asp-action="Appointment"
+                       asp-route-id="@doctor.DoctorId">
+                        Book Appointment
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

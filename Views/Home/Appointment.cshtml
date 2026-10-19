@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Appointment";
+}
+
+<h1>Hospital Appointment</h1>
+
+@if (ViewBag.PatientName == null)
+{
+    <form asp-action="Appointment" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden"
+               name="doctorId"
+               value="@ViewBag.DoctorId" />
+
+        <div class="mb-3">
+            <label class="form-label">Patient Name</label>
+            <input type="text"
+                   name="patientName"
+                   class="form-control"
+                   required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Select Specialization</label>
+            <select name="specialization"
+                    class="form-control"
+                    required>
+                <option value="">Select Specialization</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="Neurologist">Neurologist</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Submit Appointment
+        </button>
+    </form>
+}
+else
+{
+    <h3>Appointment Submitted Successfully!</h3>
+
+    <p>Patient Name: @ViewBag.PatientName</p>
+    <p>Doctor ID: @ViewBag.DoctorId</p>
+    <p>Selected Specialization: @ViewBag.Specialization</p>
+
+    <a asp-action="Index">Back to Home</a>
+}
